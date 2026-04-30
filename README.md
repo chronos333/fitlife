@@ -346,5 +346,3 @@ O sistema será aceito se:
 ## 11. Conclusão
 
 O aplicativo **FITLife** atende aos requisitos definidos, oferecendo uma solução funcional para monitoramento de atividades físicas, com foco em organização, usabilidade e atualização em tempo real utilizando Provider.
-
-## 7. Modelo de Dados
