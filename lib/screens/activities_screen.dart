@@ -3,49 +3,69 @@ import 'package:provider/provider.dart';
 import '../Providers/app_state.dart';
 import '../widgets/activity_tile.dart';
 
+/// Tela responsável por exibir e gerenciar as atividades físicas.
+/// Possui duas abas: Pendentes e Concluídas.
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Acessa o estado global da aplicação (Provider)
     var app = Provider.of<AppState>(context);
 
     return DefaultTabController(
-      length: 2,
+      length: 2, // Define duas abas
       child: Column(
         children: [
+          /// Barra de abas (TabBar)
+          /// Permite alternar entre atividades pendentes e concluídas
           const TabBar(
             tabs: [
               Tab(text: "Pendentes"),
               Tab(text: "Concluídas"),
             ],
           ),
+
+          /// Conteúdo das abas
           Expanded(
             child: TabBarView(
               children: [
-                // Aba 1: Atividades Pendentes
+                // ABA 1: ATIVIDADES PENDENTES
                 app.pendingActivities.isEmpty
-                    ? const Center(child: Text("Nenhuma atividade pendente!"))
+                    // Caso não haja atividades pendentes
+                    ? const Center(
+                        child: Text("Nenhuma atividade pendente!"),
+                      )
                     : ListView(
+                        // Lista dinâmica de atividades pendentes
                         children: app.pendingActivities.map((activity) {
-                          // Reutilizando o widget ActivityTile
                           return ActivityTile(
-                            title: activity,
-                            isCompleted: false,
-                            onTap: () => app.completeActivity(activity),
+                            title: activity, // Nome da atividade
+                            isCompleted: false, // Status pendente
+
+                            // Ao clicar, marca como concluída
+                            onTap: () =>
+                                app.completeActivity(activity),
                           );
                         }).toList(),
                       ),
-                // Aba 2: Atividades Concluídas
+                // ABA 2: ATIVIDADES CONCLUÍDAS
                 app.completedActivities.isEmpty
-                    ? const Center(child: Text("Nenhuma atividade concluída ainda!"))
+                    // Caso não haja atividades concluídas
+                    ? const Center(
+                        child:
+                            Text("Nenhuma atividade concluída ainda!"),
+                      )
                     : ListView(
+                        // Lista dinâmica de atividades concluídas
                         children: app.completedActivities.map((activity) {
-                          // Reutilizando o widget ActivityTile
                           return ActivityTile(
-                            title: activity,
-                            isCompleted: true,
-                            onTap: () => app.uncompleteActivity(activity),
+                            title: activity, // Nome da atividade
+                            isCompleted: true, // Status concluído
+
+                            // Ao clicar, retorna para pendentes
+                            onTap: () =>
+                                app.uncompleteActivity(activity),
                           );
                         }).toList(),
                       ),
