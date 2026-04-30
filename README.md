@@ -1,24 +1,26 @@
-# 📄 Documentação de Requisitos – FITLife
-**Padrão: ISO/IEC/IEEE 29148**
+# 📄 Documentação de Requisitos – FITLife  
+**Padrão: ISO/IEC/IEEE 29148 (SRS – Software Requirements Specification)**
 
 ---
 
 ## 1. Introdução
 
 ### 1.1 Propósito
-Este documento descreve os requisitos do aplicativo **FITLife**, desenvolvido em Flutter, com o objetivo de auxiliar usuários no monitoramento de atividades físicas e hábitos saudáveis.
+Este documento especifica os requisitos funcionais e não funcionais do aplicativo **FITLife**, desenvolvido em Flutter.  
+O objetivo é fornecer uma base clara para desenvolvimento, validação e apresentação do sistema.
 
 ---
 
 ### 1.2 Escopo
-O aplicativo FITLife permitirá:
+O **FITLife** é um aplicativo mobile voltado para o monitoramento de atividades físicas, permitindo que usuários:
 
-- Registrar atividades físicas
-- Acompanhar progresso
-- Visualizar métricas de desempenho
-- Gerenciar configurações
+- Registrem atividades físicas
+- Marquem atividades como concluídas
+- Acompanhem progresso em tempo real
+- Visualizem métricas de desempenho
+- Configurem preferências do sistema
 
-O sistema será um protótipo funcional com navegação fluida e atualização em tempo real utilizando Provider.
+O sistema é um **protótipo funcional**, com foco em usabilidade, organização e gerenciamento de estado utilizando **Provider**.
 
 ---
 
@@ -27,16 +29,29 @@ O sistema será um protótipo funcional com navegação fluida e atualização e
 | Termo | Definição |
 |------|--------|
 | Flutter | Framework para desenvolvimento mobile |
-| Provider | Gerenciamento de estado |
+| Provider | Gerenciador de estado |
 | Dashboard | Painel de métricas |
-| UI | Interface do usuário |
+| UI | Interface do Usuário |
+| UX | Experiência do Usuário |
+
+---
+
+### 1.4 Referências
+
+- Documentação oficial do Flutter  
+- Documentação do Provider  
+- ISO/IEC/IEEE 29148 – Engenharia de Requisitos  
 
 ---
 
 ## 2. Visão Geral do Sistema
 
 ### 2.1 Perspectiva do Produto
-O FITLife é um aplicativo independente voltado para saúde e bem-estar, podendo futuramente integrar com APIs externas.
+O FITLife é um sistema independente, podendo futuramente integrar com:
+
+- APIs de saúde
+- Dispositivos wearables (smartwatch)
+- Sistemas de autenticação
 
 ---
 
@@ -44,67 +59,89 @@ O FITLife é um aplicativo independente voltado para saúde e bem-estar, podendo
 
 O sistema deverá:
 
-- Exibir tela inicial
-- Gerenciar atividades físicas
-- Permitir conclusão de atividades
-- Exibir dashboard com métricas
-- Permitir configurações do usuário
+- Exibir tela inicial (splash)
+- Gerenciar atividades físicas (CRUD parcial)
 - Atualizar dados em tempo real
+- Exibir dashboard com métricas
+- Permitir configuração de preferências
+- Controlar navegação entre telas
 
 ---
 
 ### 2.3 Características dos Usuários
 
-O sistema é destinado a:
-
-- Usuários interessados em saúde e fitness
-- Iniciantes e praticantes de exercícios
-- Usuários com conhecimento básico de smartphones
+| Tipo de Usuário | Características |
+|----------------|--------------|
+| Iniciante | Busca controle básico de atividades |
+| Intermediário | Acompanha metas e desempenho |
+| Geral | Usuário com conhecimento básico em apps mobile |
 
 ---
 
-### 2.4 Restrições
+### 2.4 Ambiente Operacional
 
-- Desenvolvido em Flutter
-- Uso obrigatório do Provider
-- Aplicação mobile (Android)
-- Não requer conexão com internet
+- Plataforma: Android
+- Linguagem: Dart
+- Framework: Flutter
+- Gerenciamento de estado: Provider
+
+---
+
+### 2.5 Restrições
+
+- Uso obrigatório de Flutter
+- Uso obrigatório de Provider
+- Não utiliza banco de dados externo
+- Funciona offline
+
+---
+
+### 2.6 Suposições e Dependências
+
+- O usuário possui conhecimento básico de navegação em apps
+- O dispositivo possui suporte ao Flutter
+- O app não depende de conexão com internet
 
 ---
 
 ## 3. Requisitos Funcionais
 
 ### RF01 – Tela Inicial
-O sistema deve exibir:
+O sistema deve:
 
-- Nome do aplicativo
-- Slogan
-- Botão “Começar”
+- Exibir nome do aplicativo
+- Exibir slogan
+- Exibir logo
+- Possuir botão "Começar"
 
 ---
 
 ### RF02 – Navegação
 O sistema deve permitir navegação através de:
 
+- Drawer (menu lateral)
 - BottomNavigationBar
-- Drawer
+- Tabs internas (TabBarView)
 
 ---
 
 ### RF03 – Gerenciamento de Atividades
+
 O sistema deve:
 
-- Exibir atividades pendentes
-- Permitir marcar atividades como concluídas
-- Mover atividades para lista de concluídas
+- Exibir lista de atividades pendentes
+- Permitir marcar atividade como concluída
+- Permitir desfazer conclusão
+- Atualizar listas automaticamente
 
 ---
 
 ### RF04 – Dashboard
+
 O sistema deve exibir:
 
-- Quantidade de atividades concluídas
-- Quantidade de atividades pendentes
+- Total de atividades concluídas
+- Total de atividades pendentes
 - Calorias estimadas
 - Tempo total de treino
 - Meta semanal
@@ -112,153 +149,150 @@ O sistema deve exibir:
 ---
 
 ### RF05 – Configurações
+
 O sistema deve permitir:
 
 - Alternar modo escuro
+- Alterar meta semanal
 - Resetar progresso
-- Definir meta semanal
 
 ---
 
 ### RF06 – Atualização em Tempo Real
-O sistema deve atualizar automaticamente os dados ao:
 
-- Concluir atividades
-- Alterar configurações
+O sistema deve:
+
+- Atualizar automaticamente a interface ao alterar dados
+- Utilizar Provider para gerenciamento de estado
+
+---
+
+### RF07 – Ajuda
+
+O sistema deve:
+
+- Exibir instruções básicas de uso
+- Disponibilizar diálogo explicativo ao usuário
 
 ---
 
 ## 4. Requisitos Não Funcionais
 
 ### RNF01 – Usabilidade
-Interface simples, intuitiva e de fácil navegação.
+- Interface simples e intuitiva
+- Navegação clara e acessível
 
 ---
 
 ### RNF02 – Desempenho
-Atualizações devem ocorrer em tempo real sem atrasos perceptíveis.
+- Atualizações em tempo real
+- Baixo tempo de resposta
 
 ---
 
 ### RNF03 – Manutenibilidade
-O código deve ser organizado em:
-
-- Providers
-- Screens
-- Widgets
+- Código modularizado
+- Separação de responsabilidades
+- Uso de boas práticas
 
 ---
 
 ### RNF04 – Portabilidade
-Compatível com dispositivos Android.
+- Compatível com Android
+- Possibilidade de adaptação para iOS
+
+---
+
+### RNF05 – Escalabilidade
+- Estrutura preparada para futuras integrações
+- Possibilidade de adicionar banco de dados
 
 ---
 
 ## 5. Requisitos de Interface
 
 ### 5.1 Interface do Usuário
+
 O sistema deve conter:
 
 - AppBar
 - Drawer
 - BottomNavigationBar
-- TabBarView
+- TabBar + TabBarView
 - ListView
 - GridView
+- Cards
 
 ---
 
 ### 5.2 Interface de Software
 
 - Flutter SDK
-- Provider
+- Provider (ChangeNotifier)
 
 ---
 
 ## 6. Casos de Uso
 
-### Caso de Uso 01 – Iniciar Aplicação
+---
+
+### UC01 – Iniciar Aplicação
 
 **Ator:** Usuário  
 
-**Fluxo:**
+**Fluxo Principal:**
 1. Usuário abre o aplicativo  
 2. Visualiza tela inicial  
-3. Clica em “Começar”  
-4. Sistema direciona para tela principal  
+3. Pressiona "Começar"  
+4. Sistema redireciona para tela principal  
 
 ---
 
-### Caso de Uso 02 – Concluir Atividade
+### UC02 – Concluir Atividade
 
 **Ator:** Usuário  
 
-**Fluxo:**
-1. Acessa tela de atividades  
-2. Seleciona uma atividade pendente  
+**Fluxo Principal:**
+1. Usuário acessa aba de atividades  
+2. Seleciona atividade pendente  
 3. Marca como concluída  
-4. Sistema move atividade para lista de concluídas  
+4. Sistema atualiza listas e dashboard  
 
 ---
 
-### Caso de Uso 03 – Visualizar Dashboard
+### UC03 – Desfazer Atividade
 
 **Ator:** Usuário  
 
-**Fluxo:**
-1. Acessa dashboard  
-2. Visualiza métricas atualizadas  
+**Fluxo Principal:**
+1. Usuário acessa atividades concluídas  
+2. Seleciona atividade  
+3. Retorna para pendentes  
+4. Sistema atualiza dados  
 
 ---
 
-### Caso de Uso 04 – Alterar Configurações
+### UC04 – Alterar Configurações
 
 **Ator:** Usuário  
 
-**Fluxo:**
+**Fluxo Principal:**
 1. Acessa configurações  
-2. Ativa/desativa modo escuro  
-3. Sistema aplica alteração  
+2. Altera preferências (tema/meta)  
+3. Sistema aplica mudanças em tempo real  
+
+---
+
+### UC05 – Resetar Progresso
+
+**Ator:** Usuário  
+
+**Fluxo Principal:**
+1. Usuário solicita reset  
+2. Sistema pede confirmação  
+3. Dados são apagados  
+4. Interface é atualizada  
 
 ---
 
 ## 7. Modelo de Dados
-    Atividade:
-
-    nome: String
-    status: (pendente/concluída)
-
-    AppState:
-
-    listaPendentes: List<String>
-    listaConcluidas: List<String>
-    metaSemanal: int
-    tema: boolean
-
----
-
-## 8. Critérios de Aceitação
-
-O sistema será considerado válido se:
-
-- ✔ Navegação funcionando corretamente  
-- ✔ Atividades sendo movidas corretamente  
-- ✔ Dashboard atualizado em tempo real  
-- ✔ Provider implementado corretamente  
-- ✔ Mínimo de 3 telas funcionais  
-
----
-
-## 9. Melhorias Futuras
-
-- Integração com APIs de saúde  
-- Sistema de login  
-- Persistência de dados (SQLite)  
-- Gráficos avançados  
-- Notificações  
-
----
-
-## 10. Conclusão
-
-O aplicativo FITLife atende aos requisitos propostos, utilizando Flutter e Provider para fornecer uma experiência funcional e organizada, com atualização em tempo real e foco no monitoramento de atividades físicas.
