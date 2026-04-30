@@ -295,4 +295,54 @@ O sistema deve conter:
 
 ---
 
+Atividade:
+
+nome: String
+status: boolean (true = concluída)
+
+AppState:
+
+pendingActivities: List<String>
+completedActivities: List<String>
+weeklyGoal: int
+isDarkMode: boolean
+currentIndex: int
+
+
+---
+
+## 8. Critérios de Aceitação
+
+O sistema será aceito se:
+
+- ✔ Navegação funcionar corretamente  
+- ✔ Atividades forem atualizadas corretamente  
+- ✔ Dashboard refletir dados em tempo real  
+- ✔ Provider estiver implementado corretamente  
+- ✔ Interface estiver funcional e organizada  
+
+---
+
+## 9. Riscos
+
+- Falhas na atualização do estado
+- Erros na navegação entre telas
+- Falta de persistência de dados
+
+---
+
+## 10. Melhorias Futuras
+
+- Integração com banco de dados (SQLite/Firebase)
+- Sistema de login
+- Gráficos interativos
+- Notificações
+- Integração com smartwatch
+
+---
+
+## 11. Conclusão
+
+O aplicativo **FITLife** atende aos requisitos definidos, oferecendo uma solução funcional para monitoramento de atividades físicas, com foco em organização, usabilidade e atualização em tempo real utilizando Provider.
+
 ## 7. Modelo de Dados
