@@ -66,8 +66,8 @@ class HomeScreen extends StatelessWidget {
               title: const Text("Dashboard"),
               leading: const Icon(Icons.home),
               onTap: () {
-                appState.changeTab(0); // Atualiza a aba
-                Navigator.pop(context); // Fecha o drawer
+                appState.changeTab(0);
+                Navigator.pop(context);
               },
             ),
 
@@ -90,35 +90,6 @@ class HomeScreen extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-
-            /// Item adicional: Ajuda
-            ListTile(
-              title: const Text("Ajuda"),
-              leading: const Icon(Icons.help),
-              onTap: () {
-                Navigator.pop(context);
-
-                // Exibe um diálogo com instruções de uso
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: const Text("Ajuda"),
-                    content: const Text(
-                      "FITLife ajuda você a acompanhar suas atividades físicas.\n\n"
-                      "• Marque atividades como concluídas na aba Atividades.\n"
-                      "• Acompanhe seu progresso no Dashboard.\n"
-                      "• Ajuste suas configurações na aba Config.",
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: const Text("Fechar"),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
           ],
         ),
       ),
@@ -130,7 +101,6 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: appState.currentIndex,
 
-        // Atualiza o índice ao clicar em uma aba
         onTap: appState.changeTab,
 
         items: const [
